@@ -15,6 +15,10 @@ app.get('/ping', (req, res)=>{
     res.send('pong');
 });
 
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+  });
+
 app.use(bodyParser.json());
 app.use(cors());
 app.use('/auth', AuthRouter)
